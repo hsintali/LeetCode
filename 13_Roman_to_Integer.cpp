@@ -1,3 +1,7 @@
+/*
+https://leetcode.com/problems/roman-to-integer/
+
+*/
 class Solution {
 public:
     int romanToInt(string s) {
@@ -34,6 +38,8 @@ public:
             if(i == 0)
                 continue;
             
+            // If the current number is larger than previous number, it means a substraction
+            // Ex: IV (current number[i] is 'V')
             if(number[i] > number[i-1])
                 n -= 2*number[i-1];
         }
