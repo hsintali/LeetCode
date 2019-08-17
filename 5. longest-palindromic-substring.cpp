@@ -1,11 +1,13 @@
-/*
-https://leetcode.com/problems/longest-palindromic-substring/
+/* https://leetcode.com/problems/longest-palindromic-substring/ */
 
+/*
+Intuition:
 Find its centers, than expand the string untill s[left] != s[right].
 
-Time complexity : O(n^2). There are 2n−1 centers. 
-Since expanding a palindrome around its center could take O(n) time, the overall complexity is O(n^2).
-Space complexity : O(1). 
+Time complexity: O(n^2)
+There are 2n−1 centers. Since expanding a palindrome around its center could take O(n) time, the overall complexity is O(n^2).
+
+Space complexity: O(1)
 */
 
 class Solution {
