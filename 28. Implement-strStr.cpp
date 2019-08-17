@@ -1,9 +1,11 @@
+/* https://leetcode.com/problems/implement-strstr/ */
+
 /*
-https://leetcode.com/problems/implement-strstr/
+Intuition: brute force
+
+Time complexity: O(mn)
 
 O(m+n): KMP pattern matching
-O(mn):  Brute Force
-Here is the brute force solution.
 */
 
 class Solution {
