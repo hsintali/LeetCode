@@ -1,10 +1,12 @@
-/* https://leetcode.com/problems/zigzag-conversion */
+/* https://leetcode.com/problems/zigzag-conversion/ */
 
 /* Approach 1: Sort by Row
 Intuition:
 By iterating through the string from left to right, we can easily determine which row in the Zig-Zag pattern that a character belongs to.
-Time Complexity: O(n)O(n), where n == \text{len}(s)n==len(s)
-Space Complexity: O(n)O(n) 
+
+Time Complexity: O(n), where n == \text{len}(s)n==len(s)
+
+Space Complexity: O(n) 
 */
 
 class Solution {
