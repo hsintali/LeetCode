@@ -1,6 +1,7 @@
-/*
-https://leetcode.com/problems/integer-to-roman/
+/* https://leetcode.com/problems/integer-to-roman/ */
 
+/*
+Intuition:
 給定一個數值 [int num]
 首先減去 numbers 裡最大的數值，如果 num - numbers[index] >= 0，則代表需要輸出 numbers[index] 的羅馬字母；
 如果 num - numbers[index] < 0，則代表需要減去 numbers[++index] 直到 num - numbers[++index] >= 0，然後再輸出其對應的羅馬字母。
