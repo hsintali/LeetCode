@@ -1,7 +1,6 @@
 /* https://leetcode.com/problems/implement-strstr/ */
 
-/*
-Intuition: brute force
+/* Approach: Brute Force
 
 Time complexity: O(mn)
 
