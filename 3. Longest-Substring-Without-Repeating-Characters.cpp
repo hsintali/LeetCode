@@ -1,9 +1,11 @@
 /* https://leetcode.com/problems/longest-substring-without-repeating-characters/ */
 
-/*
-Intuition: brute force
+/* Approach 1: Brute Force
+Intuition:
 Check all the substring one by one to see if it has no duplicate character by hashset.
+
 Time complexity: O(n^2)
+Space complexity: O(k), where kk is the size of the Set k <= n
 */
 
 class Solution {
@@ -38,4 +40,35 @@ public:
     }
     
     int length = 0;
+};
+
+/* Approach 2: Sliding Window
+
+Time complexity: O(2n)
+Space complexity: O(k), where kk is the size of the Set k <= n
+*/
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s)
+    {   
+        int left = 0, right = 0;
+        int length = 0;
+        unordered_set<char> substring;
+        
+        while(left < s.size() && right < s.size())
+        {
+            if(substring.find(s[right]) == substring.end())
+            {
+                substring.insert(s[right++]);
+                length = max(length, right - left);
+            }
+            else
+            {
+                substring.erase(s[left++]);
+            }          
+        }
+             
+        return length;
+    }
 };
