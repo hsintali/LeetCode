@@ -1,10 +1,10 @@
 /* https://leetcode.com/problems/longest-common-prefix/ */
 
 /* Approach 1: Brute Force
-Intuition:
+Intuition: Vertical scanning
 
-Time complexity:
-Space complexity:
+Time complexity: O(m*n). In the worst case there will be n equal strings with length m.
+Space complexity: O(1)
 */
 
 class Solution {
