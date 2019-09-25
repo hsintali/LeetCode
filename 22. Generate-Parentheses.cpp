@@ -52,3 +52,38 @@ public:
         return count == 0;
     }
 };
+
+/* Approach 2: backtracking
+Intuition: We only add parentheses when we know it will remain a valid sequence.
+
+Time complexity: 
+Space complexity: 
+*/
+
+class Solution {
+public:
+    vector<string> results;
+    
+    vector<string> generateParenthesis(int n)
+    {
+        string seq;
+        backtrack(seq, 0, 0, n);
+        return results;        
+    }
+    
+    void backtrack(string seq, int left, int right, int n)
+    {
+        if(seq.size() == 2 * n)
+        {
+            results.push_back(seq);
+        }
+        else
+        {
+            if(left < n)
+                backtrack(seq + '(', left + 1, right, n);
+            
+            if(right < left)
+                backtrack(seq + ')', left, right + 1, n);
+        }
+    }
+};
