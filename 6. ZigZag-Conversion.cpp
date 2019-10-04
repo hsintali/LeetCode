@@ -4,7 +4,7 @@
 Intuition:
 By iterating through the string from left to right, we can easily determine which row in the Zig-Zag pattern that a character belongs to.
 
-Time Complexity: O(n), where n == \text{len}(s)n==len(s)
+Time Complexity: O(n), where n==len(s)
 
 Space Complexity: O(n) 
 */
