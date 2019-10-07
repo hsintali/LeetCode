@@ -23,6 +23,7 @@ public:
     }
 };
 */
+
 class Solution {
 public:
     Node *first = NULL;
