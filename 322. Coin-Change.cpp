@@ -3,8 +3,8 @@
 /* Approach 1: DP
 Intuition:
 
-Time complexity: O(n)
-Space complexity: O(n)
+Time complexity: O(S*n), where S is amount, n is #type of coins
+Space complexity: O(S)
 */
 
 class Solution {
