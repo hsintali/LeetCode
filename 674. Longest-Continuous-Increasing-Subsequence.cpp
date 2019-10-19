@@ -39,5 +39,30 @@ Time complexity: O(n)
 Space complexity: O(1)
 */
 
-
-
+class Solution {
+public:
+    int findLengthOfLCIS(vector<int>& nums)
+    {
+        int n = nums.size();
+        if(n <= 1) return n;
+        
+        int length = 1;
+        int dp = 1;
+        
+        for(int i = 1; i < n; ++i)
+        {
+            if(nums[i - 1] < nums[i])
+            {
+               ++dp;
+            }
+            else
+            {
+                dp = 1;
+            }
+            
+            length = max(length, dp);
+        }
+        
+        return length;
+    }
+};
