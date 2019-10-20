@@ -16,7 +16,7 @@ public:
         int n = costs.size();
         int f[2][3];
         f[0][0] = f[0][1] = f[0][2] = 0;
-        int now= 1, old = 1;
+        int now = 1, old = 1;
         
         for(int i = 1; i <= n; ++i)
         {
