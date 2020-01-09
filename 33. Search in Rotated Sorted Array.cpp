@@ -26,7 +26,7 @@ public:
             {
                 return mid;
             }
-            else if(nums[mid] <= nums[nums.size() - 1]) // middle is on the right side
+            else if(nums[mid] <= nums[end]) // middle is on the right side
             {
                 if(nums[mid] <= target && target <= nums[end])
                 {
@@ -37,7 +37,7 @@ public:
                     end = mid;
                 }
             }
-            else if(nums[mid] > nums[nums.size() - 1]) // middle is on the left side
+            else if(nums[mid] > nums[end]) // middle is on the left side
             {
                 if(nums[start] <= target && target <= nums[mid])
                 {
