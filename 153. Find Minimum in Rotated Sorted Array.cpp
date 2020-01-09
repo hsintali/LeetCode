@@ -20,11 +20,11 @@ public:
         {
             int mid = start + (end - start)/2;
             
-            if(nums[mid] > nums[nums.size() - 1])
+            if(nums[mid] > nums[end])
             {
                 start = mid;
             }
-            else if(nums[mid] <= nums[nums.size() - 1])
+            else if(nums[mid] <= nums[end])
             {
                 end = mid;
             }
