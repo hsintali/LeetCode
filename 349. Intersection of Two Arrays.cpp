@@ -65,3 +65,41 @@ public:
         return false;
     } 
 };
+
+/* Approach 2: two set
+Intuition: 將 nums1. nums2 存到 set1, set2，在遍歷 set1，判斷 set2 中是否存在相同元素
+Time complexity: O(n+m), n=nums1.size(), m=nums2.size()
+Space complexity: O(n+m)
+*/
+
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2)
+    {
+        if(nums1.size() == 0 || nums2.size() == 0) return vector<int>();
+        
+        unordered_set<int> set1, set2;
+        
+        for(auto val : nums1)
+        {
+            set1.emplace(val);
+        }
+        
+        for(auto val : nums2)
+        {
+            set2.emplace(val);
+        }
+        
+        vector<int> ans;
+        
+        for(auto val : set1)
+        {
+            if(set2.find(val) != set2.end())
+            {
+                ans.emplace_back(val);
+            }
+        }
+        
+        return ans;
+    }
+};
