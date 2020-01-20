@@ -16,13 +16,13 @@ public:
         int slow = 0; // pointer to unique number
         int fast = 1; // current position
         
-        while(fast < nums.size())
+        for(; fast < nums.size(); ++fast)
         {
             if(nums[fast] == nums[slow])
             {
-                ++fast;
+
             }
-            else
+            else if(nums[fast] != nums[slow])
             {
                 nums[++slow] = nums[fast];
             }
