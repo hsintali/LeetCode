@@ -1,6 +1,6 @@
 /* https://leetcode.com/problems/minimum-size-subarray-sum/ */
 
-/* Approach 1: two pointer
+/* Approach 1: two pointer + sliding window
 Intuition:
 Time complexity: O(n)
 Space complexity: O(1)
