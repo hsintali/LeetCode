@@ -6,7 +6,7 @@ Intuition: 先透過 hash map 存下 S 中各字母的最後一個位置，
            最後用 i 遍歷過整個 S。
            
 Time complexity: O(n)
-Space complexity: O(1)
+Space complexity: O(n)
 */
 
 class Solution {
