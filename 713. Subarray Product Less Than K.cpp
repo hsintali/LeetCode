@@ -1,7 +1,7 @@
 /* https://leetcode.com/problems/subarray-product-less-than-k/ *
 
 /* Approach 1: two pointer + sliding window
-Intuition:跳過 >= k 的情況，此時的 left, right 組成的區間會滿足 product < k。
+Intuition:跳過所有 product >= k 的情況，此時的 left, right 組成的區間會滿足 product < k。
 
 Time complexity: O(n)
 Space complexity: O(1)
