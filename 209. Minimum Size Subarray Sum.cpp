@@ -1,7 +1,8 @@
 /* https://leetcode.com/problems/minimum-size-subarray-sum/ */
 
 /* Approach 1: two pointer + sliding window
-Intuition:
+Intuition:跳過所有 sum - nums[left] >= s 的情況，此時的 left, right 組成的區間且滿足 sum >= s 會是 size 最小的。
+
 Time complexity: O(n)
 Space complexity: O(1)
 */
