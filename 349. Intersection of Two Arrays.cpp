@@ -67,7 +67,7 @@ public:
 };
 
 /* Approach 2: two set
-Intuition: 將 nums1. nums2 存到 set1, set2，在遍歷 set1，判斷 set2 中是否存在相同元素
+Intuition: 將 nums1. nums2 存到 set1, set2，再遍歷 set1，判斷 set2 中是否存在相同元素
 Time complexity: O(n+m), n=nums1.size(), m=nums2.size()
 Space complexity: O(n+m)
 */
