@@ -33,28 +33,20 @@ public:
     
     void put(int key, int value)
     {
-        if(hashMap.count(key) == 1)
+        if(get(key) != -1)
         {
-            cache.erase(hashMap.at(key));
-            
-            cache.push_back({key, value});
-            hashMap[key] = --cache.end();
+            hashMap[key]->second = value;
             return;
         }
         
-        if(hashMap.size() < capacity)
-        {
-            cache.push_back({key, value});
-            hashMap[key] = --cache.end();
-        }
-        else
+        cache.push_back({key, value});      
+        hashMap[key] = --cache.end();
+        
+        if(hashMap.size() > capacity)
         {
             int head = cache.front().first;
             hashMap.erase(head);
             cache.pop_front();
-            
-            cache.push_back({key, value});
-            hashMap[key] = --cache.end();
         }
     }
     
