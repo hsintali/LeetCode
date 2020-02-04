@@ -82,3 +82,68 @@ public:
         return result.substr(0, result.size() - 1);
     }
 };
+
+/* Approach 3: in place
+Intuition: 先去頭去尾的空格，再去掉每個字之間多出的空格
+           整個字串翻轉一次，再針對每個 word 翻轉回來。
+
+Time complexity: O(n)
+Space complexity: O(1)
+*/
+
+class Solution {
+public:
+    string reverseWords(string s)
+    {
+        if(s.size() == 0) return "";
+        
+        int start = 0;
+        int end = 0;
+        
+        // remove leading spaces
+        int pos = 0;
+        while(s[pos] == ' ' && pos < s.size())
+        {
+            ++pos;
+        }
+        start = pos;
+        
+        // remove trailing spaces
+        pos = s.size() - 1;
+        while(s[pos] == ' ' && pos >= 0)
+        {
+            --pos;
+        }
+        end = pos;
+        
+        // remove extra spaces between words
+        int len = 0;
+        for(int i = start; i <= end; ++i)
+        {
+            if(s[i] == ' ' && s[i - 1] == ' ')
+            {
+                continue;
+            }
+            
+            s[len++] = s[i];
+        }
+        s.erase(s.begin() + len, s.end());
+        
+        // reverse s
+        reverse(s.begin(), s.end());
+        
+        // reverse each reversed-word back to correct word
+        int left = 0;
+        int right = 0;
+        while(left < s.size() && right < s.size())
+        {
+            while(s[right] != ' ' && right < s.size()) ++right;
+   
+            reverse(s.begin() + left, s.begin() + right);
+            
+            left = ++right;
+        }
+        
+        return s;
+    }
+};
