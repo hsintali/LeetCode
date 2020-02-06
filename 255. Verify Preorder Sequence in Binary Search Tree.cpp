@@ -7,7 +7,8 @@ Intuition: 前序遍歷的特性是:
            3. 右子數的所有節點的數字都要小於該根節點
            因此，
            1. 將 根節點 以及 所有的左節點 都 push 到 stack 裡面作為其子節點的根節點
-           2. 用 lowerBound(一開始是 INT_MIN) 儲存當前 被視為根節點的下界，之後遇到的節點，都應該大於此值，否則 A 就是錯誤的順序，return false
+           2. 用 lowerBound(一開始是 INT_MIN) 儲存當前 被遍歷完成(只是經過不算遍歷完成，要到底再往回(pop)前一個根節點才算)的左節點 的下界，
+              之後遇到的節點，都應該大於此值，否則 A 就是錯誤的順序，return false
            3. 若 A[i] < stk.top()，表示 A[i] 是 stk.top() 的左節點，因此 push 到 stack
            4. 若 A[i] > stk.top()，表示 A[i] 是一個右節點，
               更新 lowerBound = stack.top() 然後 pop() 掉這個數字，藉此來尋找 A[i] 的根節點
