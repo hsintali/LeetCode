@@ -12,7 +12,7 @@ Intuition: 希望 cost 最小，我們會希望:
            因此，實作時，現在 stack 放一個 INT_MAX，然後從左邊開始讀 arr
            1. 當 arr[i] > stack.top() 時，mid = stack.top() 然後 pop() 掉，
               再比較左邊的 stack.top() 和右邊的 arr[i]，中間要選擇和小的那一個數建立子樹(相乘)
-           2. 當 arr[i] < stack.top() 時，因為是遞增，要從右邊乘到左邊，
+           2. 當 arr[i] < stack.top() 時，因為是遞減，要從右邊乘到左邊，
               所以 stack.push(arr[i])
            3. arr[i] == stack.top()， (1) (2) 都可以。
            
