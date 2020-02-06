@@ -39,7 +39,7 @@ public:
     }
 };
 
-/* Approach 1: Brute Force
+/* Approach 2: Brute Force
 Intuition: 
            
 Time complexity: O(n^2)
