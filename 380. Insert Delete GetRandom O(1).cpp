@@ -1,7 +1,10 @@
 /* https://leetcode.com/problems/insert-delete-getrandom-o1/ */
 
 /* Approach 1: hashMap + array vector
-Intuition:
+Intuition: 難點在 remove 中的增刪順序。
+           避免 coner case: remove 最後一個元素，此時:
+           1. index == nums.size() - 1
+           2. rearVal = val
 
 Time complexity: GetRandom:O(1), Insert and Delete: Amortized O(1)
 Space complexity: O(n)
