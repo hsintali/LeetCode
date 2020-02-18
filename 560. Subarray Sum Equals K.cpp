@@ -71,11 +71,36 @@ public:
     }
 };
 
-/* Approach 3: HashMap
-Intuition: 
+/* Approach 3: HashMap (prefix-sum)
+Intuition: 用prefix-sum的概念
 
 Time complexity: O(n)
 Space complexity: O(n)
 */
 
-
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k)
+    {
+        if(nums.size() == 0) return 0;
+        
+        int count = 0;
+        int sum = 0;
+        unordered_map<int, int> umap = {{0, 1}};
+        
+        for(int i = 0; i < nums.size(); ++i)
+        {
+            sum += nums[i];
+            
+            int res = sum - k; // prefix-sum: sum - res = k
+            if(umap.count(res) == 1)
+            {
+                count += umap[res];
+            }
+            
+            ++umap[sum];  
+        }
+        
+        return count;
+    }
+};
