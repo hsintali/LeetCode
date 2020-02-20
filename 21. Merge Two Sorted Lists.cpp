@@ -55,9 +55,9 @@ class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2)
     {
-        ListNode *head = new ListNode(-1);
+        ListNode dummy(-1);
         
-        ListNode *node = head;
+        ListNode *node = &dummy;
         
         while(l1 != NULL && l2 != NULL)
         {
@@ -81,6 +81,6 @@ public:
         node->next = (l1 == NULL) ? l2 : l1;
         
         // head->val is -1, so return head->next
-        return head->next;
+        return dummy.next;
     }
 };
