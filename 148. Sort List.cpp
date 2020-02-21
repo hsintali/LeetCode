@@ -73,8 +73,10 @@ public:
 };
 
 /* Approach 2: Merge Sort (Iteration: Bottom-Up)
-Intuition: 
-
+Intuition: while: 拆成多個 size 為 n 的 splits，然後兩兩 merge。
+           for: 倍增 n 的大小。
+           Ex: [4 | 2 | 3 | 1] => [2 4 | 1 3] => [1 2 3 4]
+           
 Time complexity: O(nlog)
 Space complexity: O(1)
 */
@@ -113,10 +115,13 @@ public:
         
         for(int n = 1; n < len; n <<= 1)
         {
+            // reset tail to dummy node
             tail = &dummy;
+            
+            // reset rest to the first node
             rest = tail->next;
             
-            // To merge each split with size n
+            // To merge each two-splits with size n -> 2n
             // after merged, each split is sorted
             while(rest != nullptr)
             {
@@ -135,7 +140,7 @@ public:
                 tail->next = merged.first;
                 
                 // link the merged part and the rest part
-                //merged.second->next = rest;
+                //merged.second->next = rest; // This part can skip
                 
                 // proceed tail
                 tail = merged.second;
