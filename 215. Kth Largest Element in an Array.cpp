@@ -76,3 +76,31 @@ public:
         return nums[right + 1];
     }
 };
+
+/* Approach 3: min heap sort
+Intuition: 將 nums 的數值依序丟掉 heap 中，heap size 保持到最多 k 個，超過則 pop 掉。
+           當 nums 的數值都丟到 heap 之後，heap 頂端就會是第 k 大的元素。
+           
+Time complexity: O(nlogk)
+Space complexity: O(k)
+*/
+
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k)
+    {
+        priority_queue<int, vector<int>, greater<int>> minHeap;
+        
+        for(auto val : nums)
+        {
+            minHeap.push(val);
+            
+            if(minHeap.size() > k)
+            {
+                minHeap.pop();
+            }
+        }
+        
+        return minHeap.top();
+    }
+};
