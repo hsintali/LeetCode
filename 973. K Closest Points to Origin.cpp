@@ -116,12 +116,12 @@ public:
             }
         }
         
-        if(start + K - 1 < right)
+        if(start + K - 1 <= right)
         {
             return quickSelect(A, start, right, K);
         }
         
-        if(start + K - 1 > right)
+        if(start + K - 1 >= left)
         {
             return quickSelect(A, left, end, K - (left - start));
         }
