@@ -74,3 +74,61 @@ Intuition:
 Time complexity: O(n)
 Space complexity: O(1)
 */
+
+class Solution {
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int K)
+    {
+        quickSelect(points, 0, points.size() - 1, K);
+        
+        points.resize(K);
+        
+        return points;
+    }
+    
+    void quickSelect(vector<vector<int>>& A, int start, int end, int K)
+    {
+        if(start == end) return;
+        
+        int left = start;
+        int right = end;
+        auto pivot = A[left + ((right - left) >> 1)];
+        
+        while(left <= right)
+        {
+            while(left <= right && dist(A[left]) < dist(pivot))
+            {
+                ++left;
+            }
+            
+            while(left <= right && dist(A[right]) > dist(pivot))
+            {
+                --right;
+            }     
+            
+            if(left <= right)
+            {
+                auto temp = A[left];
+                A[left] = A[right];
+                A[right] = temp;
+                ++left;
+                --right;
+            }
+        }
+        
+        if(start + K - 1 < right)
+        {
+            return quickSelect(A, start, right, K);
+        }
+        
+        if(start + K - 1 > right)
+        {
+            return quickSelect(A, left, end, K - (left - start));
+        }
+    }
+    
+    int dist(vector<int> &point)
+    {
+        return point[0] * point[0] + point[1] * point[1];
+    }
+};
