@@ -54,7 +54,7 @@ public:
         int w = buckets.size() - 1;
         int firstLargest = 0;
         
-        while(buckets[w] != 0 || w >= 1)
+        while(w >= 1)
         {
             if(firstLargest == 0) buckets[w] %= 2;
             
