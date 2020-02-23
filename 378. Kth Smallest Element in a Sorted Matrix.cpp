@@ -3,7 +3,7 @@
 /* Approach 1: Sort
 Intuition:
 
-Time complexity: O( n^2 * log(n^2) )
+Time complexity: O( n^2 * log(n^2) ), 可優化為 O( n^2 * log(n) ) 透過 merge k sorted list 的方法 (minHeap)。
 Space complexity: O(n^2)
 */
 
