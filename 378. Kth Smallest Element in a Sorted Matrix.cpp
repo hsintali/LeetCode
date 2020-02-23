@@ -104,7 +104,8 @@ public:
 };
 
 /* Approach 3: minHeap
-Intuition: 將每個 row 的第一個元素放到 minHeap，
+Intuition: 此問題可簡化為: Kth Smallest Number in N Sorted Lists (with size N)
+           將每個 row 的第一個元素放到 minHeap，
            然後每次 pop 最小的，同時放入 pop 出來的那個值所屬的 row 的下一個值。
            pop 到第 k 次後，就是答案。
 
@@ -162,3 +163,17 @@ public:
         }
     };
 };
+
+/* Approach 4: Binary Search
+Intuition:
+
+Time complexity: O(N ∗ log(max−min))
+Space complexity: O(1)
+*/
+
+/* Approach 5: from paper
+Intuition:
+
+Time complexity: O(N), O(# of row)
+Space complexity:
+*/
