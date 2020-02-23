@@ -3,7 +3,7 @@
 /* Approach 1: minHeap
 Intuition: 要注意 lists 裡面可能會有 null: [[], [1, 2], []]
 
-Time complexity: O(nlogk)
+Time complexity: O(nlogk), n is total number of nodes
 Space complexity: O(k)
 */
 
