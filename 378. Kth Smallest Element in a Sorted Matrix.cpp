@@ -297,6 +297,57 @@ Time complexity: O(N ∗ log(max−min))
 Space complexity: O(1)
 */
 
+class Solution {
+public:
+    int kthSmallest(vector<vector<int>>& matrix, int k)
+    {
+        int n = matrix.size();
+        int start = matrix[0][0];
+        int end = matrix[n - 1][n - 1];
+        
+        // O(log(max−min))
+        while(start + 1 < end)
+        {
+            int mid = start + ((end - start) >> 1);
+            int count = getLessOrEqualCount(matrix, mid); // O(n)
+           
+            if(count < k)
+            {
+                start = mid;
+            }
+            else if(count >= k)
+            {
+                end = mid;
+            }
+        }
+        
+        return getLessOrEqualCount(matrix, start) >= k ? start : end;
+    }
+    
+    int getLessOrEqualCount(vector<vector<int>>& matrix, int mid)
+    {
+        int n = matrix.size();
+        int count = 0;
+        int row = n - 1;
+        int col = 0;
+        
+        while(row >= 0 && col < n)
+        {
+            if(matrix[row][col] > mid)
+            {
+                --row;
+            }
+            else
+            {
+                count += row + 1;
+                ++col;
+            }
+        }
+        
+        return count;
+    }
+};
+
 /* Approach 5: from paper
 Intuition:
 
