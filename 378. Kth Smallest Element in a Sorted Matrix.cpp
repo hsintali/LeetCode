@@ -61,7 +61,6 @@ public:
                 if(matrix[i][j] <= target) continue;
                 
                 ans = min(ans, matrix[i][j]);
-
             }
         }
         
