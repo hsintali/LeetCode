@@ -20,11 +20,6 @@ public:
         {
             ans = getLeastGreater(matrix, ans); // O(n^2)
             count += calcCount(matrix, ans);    // O(n^2)
-            
-            if(count >= k)
-            {
-                break;
-            }
         }
         
         return ans;
