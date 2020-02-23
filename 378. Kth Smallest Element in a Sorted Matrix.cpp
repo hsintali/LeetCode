@@ -31,7 +31,7 @@ public:
     }
 };
 
-/* Approach 2: Quick Select
+/* Approach 2-1: Quick Select
 Intuition:
 
 Time complexity: O(n^2)
@@ -100,6 +100,69 @@ public:
         }
         
         return A[right + 1];
+    }
+};
+
+/* Approach 2-2: Quick Select
+Intuition:
+
+Time complexity: O(n^2)
+Space complexity: O(1)
+*/
+
+class Solution {
+public:
+    int kthSmallest(vector<vector<int>>& matrix, int k)
+    {
+        int n = matrix.size();
+        
+        if(n == 0 || matrix[0].size() == 0) return 0;
+                             
+        return quickSelect(matrix, n, 0, n * n - 1, k);
+    }
+    
+    int quickSelect(vector<vector<int>> &A, int n, int start, int end, int k)
+    {
+        if(start == end) return A[start / n][start % n];
+        
+        int left = start;
+        int right = end;
+        int index = left + ((right - left) >> 1);
+        int pivot = A[index / n][index % n];
+        
+        while(left <= right)
+        {
+            while(left <= right && A[left / n][left % n] < pivot)
+            {
+                ++left;
+            }
+            
+            while(left <= right && A[right / n][right % n] > pivot)
+            {
+                --right;
+            }
+            
+            if(left <= right)
+            {
+                int temp = A[left / n][left % n];
+                A[left / n][left % n] = A[right / n][right % n];
+                A[right / n][right % n] = temp;
+                ++left;
+                --right;
+            }
+        }
+        
+        if(start + k - 1 <= right)
+        {
+            return quickSelect(A, n, start, right, k);
+        }
+        
+        if(start + k - 1 >= left)
+        {
+            return quickSelect(A, n, left, end, k - (left - start));
+        }
+        
+        return A[(right + 1) / n][(right + 1) % n];
     }
 };
 
