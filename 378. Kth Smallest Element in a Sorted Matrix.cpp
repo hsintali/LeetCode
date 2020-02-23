@@ -1,5 +1,74 @@
 /* https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/ */
 
+/* Approach 0: Brute Force
+Intuition:
+
+Time complexity: O(k * n^2)
+Space complexity: O(1)
+*/
+
+class Solution {
+public:
+    int kthSmallest(vector<vector<int>>& matrix, int k)
+    {
+        int n = matrix.size();
+        
+        int count = 0;
+        int ans = INT_MIN;
+        
+        while(count < k) // O(k)
+        {
+            ans = getLeastGreater(matrix, ans); // O(n^2)
+            count += calcCount(matrix, ans);    // O(n^2)
+            
+            if(count >= k)
+            {
+                break;
+            }
+        }
+        
+        return ans;
+    }
+    
+    int calcCount(vector<vector<int>> &matrix, int target)
+    {
+        int count = 0;
+        int n = matrix.size();
+        
+        for(int i = 0; i < n; ++i)
+        {
+            for(int j = 0; j < n; ++j)
+            {
+                if(matrix[i][j] == target)
+                {
+                    ++count;
+                }
+            }
+        }
+        
+        return count;
+    }
+    
+    int getLeastGreater(vector<vector<int>> &matrix, int target)
+    {
+        int ans = INT_MAX;
+        int n = matrix.size();
+        
+        for(int i = 0; i < n; ++i)
+        {
+            for(int j = 0; j < n; ++j)
+            {
+                if(matrix[i][j] <= target) continue;
+                
+                ans = min(ans, matrix[i][j]);
+
+            }
+        }
+        
+        return ans;
+    }
+};
+
 /* Approach 1: Sort
 Intuition:
 
