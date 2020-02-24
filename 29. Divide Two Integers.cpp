@@ -1,6 +1,30 @@
 /* https://leetcode.com/problems/divide-two-integers/ */
 
-/* Approach 1: Math
+/* Approach 1: Math, Brute Force
+Intuition:
+
+Time complexity: O(q), q is quotient
+Space complexity: O(1)
+*/
+
+class Solution {
+public:
+    int divide(int dividend, int divisor)
+    {
+        if(dividend == INT_MIN && divisor == -1) return INT_MAX;
+        
+        // a = bq + r
+        long  a = labs(dividend);
+        long  b = labs(divisor);   
+        long  q = 0;
+        
+        while((a -= b) >= 0) ++q;
+
+        return ((dividend > 0) == (divisor > 0)) ? q : -q;
+    }
+};
+
+/* Approach 2: Math, Binary Search
 Intuition: 商數(quotient)，就是 被除數(dividend) 可以被 除數(divisor) 減去的次數(倍數)。
            所以當 dividend - (divisor << x) >= 0，則表示其 quotient 至少有 (1 << x) ==> quotient += (1 << x)
 
