@@ -15,7 +15,7 @@ public:
         
         vector<vector<int>> neighbors(numCourses, vector<int>());
         
-        // get in-degree
+        // Get in-degree
         for(auto &prerequisite : prerequisites)
         {
             // prerequisite[i, j]: j -> i
@@ -25,7 +25,7 @@ public:
         
         queue<int> que;
         
-        // put nodes with zero in-degree 
+        // Find the start nodes 
         for(int i = 0; i < numCourses; ++i)
         {
             if(inDegree[i] == 0)
@@ -36,7 +36,7 @@ public:
         
         vector<int> courses;
         
-        // BFS
+        // Topological sort
         while(!que.empty())
         {
             int cur = que.front();
