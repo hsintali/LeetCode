@@ -1,7 +1,9 @@
 /* https://leetcode.com/problems/sequence-reconstruction/ */
 
 /* Approach 1: Topological Sorting
-Intuition:
+Intuition: Coner Cases:
+           1. org[i] 有可能不存在於 seqs 中，也就是不存在於 neighbors 中
+           2. seqs 中的點有可能不屬於 [1, n] 的範圍內。
 
 Time complexity: O(V + E)
 Space complexity: O(V + E)
@@ -23,12 +25,14 @@ public:
  
             for(int i = 0; i < size; ++i)
             {
-                if(seq[i] < 1 || seq[i] > n) return false;
+                if(seq[i] < 1 || seq[i] > n) return false; // coner case 2
                 
                 neighbors[seq[i]];
                 
                 if(i < size - 1 && neighbors[seq[i]].count(seq[i + 1]) == 0)
                 {
+                    if(seq[i + 1] < 1 || seq[i + 1] > n) return false; // coner case 2
+                    
                     neighbors[seq[i]].insert(seq[i + 1]);
                     ++inDegree[seq[i + 1]];
                 }
@@ -40,7 +44,7 @@ public:
         // Find the start nodes
         for(auto &node : org)
         {
-            if(inDegree[node] == 0 && neighbors.count(node) == 1)
+            if(inDegree[node] == 0 && neighbors.count(node) == 1) // coner case 1
             {
                 que.push(node);
             }
@@ -95,13 +99,13 @@ public:
  
             for(int i = 0; i < size; ++i)
             {
-                if(seq[i] < 1 || seq[i] > n) return false;
+                if(seq[i] < 1 || seq[i] > n) return false; // coner case 2
                 
                 neighbors[seq[i]];  
                 
                 if(i < size - 1)
                 {
-                    if(seq[i + 1] < 1 || seq[i + 1] > n) return false;
+                    if(seq[i + 1] < 1 || seq[i + 1] > n) return false; // coner case 2
                     
                     neighbors[seq[i]].push_back(seq[i + 1]);
                     ++inDegree[seq[i + 1]];
@@ -114,7 +118,7 @@ public:
         // Find the start nodes
         for(auto &node : org)
         {
-            if(inDegree[node] == 0 && neighbors.count(node) == 1)
+            if(inDegree[node] == 0 && neighbors.count(node) == 1) // coner case 1
             {
                 que.push(node);
             }
