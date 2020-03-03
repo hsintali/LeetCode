@@ -40,7 +40,7 @@ public:
     }
 };
 
-/* Approach 2: Hash
+/* Approach 2: HashMap + Sort
 Intuition: 
 
 Time complexity: O(n + klogk), k is the number of distinctive values. k <= n.
