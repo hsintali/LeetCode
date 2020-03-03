@@ -43,7 +43,42 @@ public:
 /* Approach 2: Hash
 Intuition: 
 
-Time complexity: O(n)
-Space complexity: O(n)
+Time complexity: O(n + klogk), k is the number of distinctive values. k <= n.
+Space complexity: O(k)
 */
 
+class Solution {
+public:
+    bool canReorderDoubled(vector<int>& A)
+    {
+        if(A.size() == 0) return true;
+        
+        unordered_map<int, int> umap;
+        
+        for(auto & a : A)
+        {
+            ++umap[a];
+        }
+        
+        vector<int> keys;
+        for(auto &it : umap)
+        {
+            keys.push_back(it.first);
+        }
+        
+        sort(keys.begin(), keys.end(), [](int &a, int &b)
+             {
+                 return abs(a) < abs(b);
+             }
+        );
+        
+        for(auto &key : keys)
+        {
+            if(umap[2 * key] < umap[key]) return false;
+            
+            umap[2 * key] -= umap[key];
+        }
+        
+        return true;
+    }
+};
