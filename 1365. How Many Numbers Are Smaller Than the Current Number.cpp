@@ -4,7 +4,7 @@
 Intuition: 因為 0 <= nums[i] <= 100，所以可以去計算每個數字出現的次數。進而計算小於某數的次數。
 
 Time complexity: O(n)
-Space complexity: O(102)
+Space complexity: O(102) = O(1)
 */
 
 class Solution {
