@@ -4,7 +4,7 @@
 Intuition: 先計算各隊各次序的得分，再排序。
 
 Time complexity: O(26N + 26^2 * log26), N is votes.size()
-Space complexity: O(26 * 26)
+Space complexity: O(26 * 26) = O(1)
 */
 
 class Solution {
