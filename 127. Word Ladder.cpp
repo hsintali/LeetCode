@@ -67,6 +67,83 @@ public:
     }
 };
 
+/* Approach 1-2: BFS
+Intuition: 
+
+Time complexity: Amortized O(N * L), where L is the length of words and N is the total number of words in the input word list
+Space complexity: O(N * L)
+*/
+
+class Solution {
+public:
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList)
+    {
+        unordered_set<string> dict;
+        for(auto &word : wordList)
+        {
+            dict.insert(word);
+        }
+        
+        queue<string> que;
+        que.push(beginWord);
+        
+        // O(N)
+        for(int steps = 2; !que.empty(); ++steps)
+        {
+            int size = que.size();
+            
+            for(int num = 0; num < size; ++num)
+            {
+                string cur = que.front();
+                que.pop();
+                vector<string> nextWords = getNext(cur, dict);
+                
+                for(auto &nextWord : nextWords)
+                {                    
+                    if(nextWord == endWord) return steps;
+                    
+                    que.push(nextWord);
+                }
+            }
+        }
+        
+        return 0;
+    }
+    
+    // O(NL / N)
+    vector<string> getNext(string s, unordered_set<string> &dict)
+    {
+        vector<string> res;
+        
+        // O(< N)
+        for(auto it = dict.begin(); it != dict.end(); )
+        {
+            auto word = *it;
+            int diff = 0;
+            
+            // O(L)
+            for(int i = 0; i < word.size(); ++i)
+            {
+                if(s[i] != word[i]) ++diff;
+                if(diff > 1) break;
+            }
+            
+            // O(L)
+            if(diff == 1)
+            {
+                res.push_back(word);
+                it = dict.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
+        }
+        
+        return res;
+    }
+};
+
 /* Approach 2: BFS
 Intuition: 
 
@@ -129,7 +206,7 @@ public:
                 if(dict.count(word) == 1)
                 {
                     res.push_back(word); // O(L)
-                    dict.erase(word);    // O(L)
+                    dict.erase(word);    // O(1)
                 }
             }
             
