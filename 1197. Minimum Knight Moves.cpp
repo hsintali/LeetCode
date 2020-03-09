@@ -54,7 +54,7 @@ public:
     }
 };
 
-/* Approach 2: BFS (Speedup)
+/* Approach 1-2: BFS (Speedup)
 Intuition:
 
 Time complexity: O(steps)
