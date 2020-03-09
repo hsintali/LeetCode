@@ -3,8 +3,8 @@
 /* Approach 1: BFS
 Intuition: 
 
-Time complexity: O(L * N * N), where L is the length of words and N is the total number of words in the input word list
-Space complexity: O(L * N)
+Time complexity: O(N^2 * L), where L is the length of words and N is the total number of words in the input word list
+Space complexity: O(N * L)
 */
 
 class Solution {
@@ -43,20 +43,23 @@ public:
         return 0;
     }
     
-    // O(LN)
+    // O(NL)
     vector<string> getNext(string s, vector<string> &wordList)
     {
         vector<string> res;
         
+        // O(N)
         for(auto &word : wordList)
         {
             int diff = 0;
             
+            // O(L)
             for(int i = 0; i < word.size(); ++i)
             {
                 if(s[i] != word[i]) ++diff;
             }
             
+            // O(L)
             if(diff == 1) res.push_back(word);
         }
         
@@ -68,7 +71,7 @@ public:
 Intuition: 
 
 Time complexity: O(N * L^2), where L is the length of words and N is the total number of words in the input word list
-Space complexity: O(L * N)
+Space complexity: O(N * L)
 */
 
 class Solution {
