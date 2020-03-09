@@ -70,7 +70,7 @@ public:
 /* Approach 1-2: BFS
 Intuition: 
 
-Time complexity: Amortized O(N * L), where L is the length of words and N is the total number of words in the input word list
+Time complexity: O(N^2 * L), where L is the length of words and N is the total number of words in the input word list
 Space complexity: O(N * L)
 */
 
@@ -110,12 +110,12 @@ public:
         return 0;
     }
     
-    // O(NL / N)
+    // Average O(0.5 * NL) for called N times
     vector<string> getNext(string s, unordered_set<string> &dict)
     {
         vector<string> res;
         
-        // O(< N)
+        // Average O(N)
         for(auto it = dict.begin(); it != dict.end(); )
         {
             auto word = *it;
