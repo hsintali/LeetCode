@@ -1,6 +1,6 @@
 /* https://leetcode.com/problems/word-ladder-ii/ */
 
-/* Approach 2: BFS
+/* Approach 1: BFS
 Intuition: 把每次找過的 word 都存在 queue 中。
 
 Time complexity: O(N * L^2), where L is the length of words and N is the total number of words in the input word list
