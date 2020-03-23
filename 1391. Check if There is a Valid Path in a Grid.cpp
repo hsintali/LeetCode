@@ -58,3 +58,72 @@ public:
         return false;
     }
 };
+
+/* Approach 1: union find
+Intuition:
+
+Time complexity: O(mn * O(uf))
+Space complexity: O(mn)
+*/
+
+class Solution {
+public:
+    int find(vector<int> &uf, int z)
+    { 
+        if(uf[z] != z) uf[z] = find(uf, uf[z]);
+        
+        return uf[z];
+    }
+    
+    void merge(vector<int> &uf, int z1, int z2)
+    {
+        int f1 = find(uf, z1);
+        int f2 = find(uf, z2);
+        
+        uf[f1] = f2;
+    }
+    
+    bool hasValidPath(vector<vector<int>>& grid)
+    {
+        int m = grid.size();
+        if(m == 0) return false;
+        
+        int n = grid[0].size();
+        if(n == 0) return false;
+        
+        vector<int> uf(m * n);
+        for(int i = 0; i < m * n; ++i)
+        {
+            uf[i] = i;
+        }
+        
+        unordered_set<int> downOut = {2, 3, 4};
+        unordered_set<int> upIn = {2, 5, 6};
+        unordered_set<int> rightOut = {1, 4, 6};
+        unordered_set<int> leftIn = {1, 3, 5};
+        
+        for(int i = 0; i < m; ++i)
+        {
+            for(int j = 0; j < n; ++j)
+            {
+                if(j > 0 && rightOut.count(grid[i][j - 1]) &&  leftIn.count(grid[i][j]))
+                {
+                    int z1 = i * n + j - 1;
+                    int z2 = z1 + 1;
+                    
+                    merge(uf, z1, z2);
+                }
+                
+                if(i > 0 && downOut.count(grid[i - 1][j]) &&  upIn.count(grid[i][j]))
+                {
+                    int z1 = (i - 1) * n + j;
+                    int z2 = z1 + n;
+                    
+                    merge(uf, z1, z2);
+                }
+            }
+        }
+        
+        return find(uf, 0) == find(uf, m * n - 1);
+    }
+};
