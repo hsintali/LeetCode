@@ -59,7 +59,7 @@ public:
     }
 };
 
-/* Approach 1: union find
+/* Approach 2: union find
 Intuition:
 
 Time complexity: O(mn * O(uf))
