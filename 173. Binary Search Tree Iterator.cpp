@@ -63,7 +63,7 @@ public:
  * bool param_2 = obj->hasNext();
  */
  
- /* Approach 2: leftmost inorder traverse + stack
+ /* Approach 2: leftmost inorder traverse + stack  # BST 模板題，閱讀背誦 #
 Intuition: 中序遍歷時，只將最左邊的子樹 push 到 stack 中。
            next()時: 先把 pop() 之後，再中序遍歷剛剛 pop 出來的 node 的右子樹。
 
