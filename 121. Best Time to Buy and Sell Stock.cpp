@@ -1,6 +1,6 @@
 /* https://leetcode.com/problems/best-time-to-buy-and-sell-stock/ */
 
-/* Approach 1: DP
+/* Approach 1: Dynamic Programming
 Intuition:
 
 Time complexity: O(n)
