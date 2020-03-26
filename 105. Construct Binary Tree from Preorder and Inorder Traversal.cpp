@@ -1,7 +1,9 @@
 /* https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/ */
 
 /* Approach 1: DFS
-Intuition:
+Intuition: preorder 的第一個元素是整棵(子)樹的"根"。再透過這個根去找 inorder 的根的位置 p。
+           因此，inorder[:p] 為左子樹，inorder[p+1:] 為右子樹。
+           再透過分治法處理左右兩邊子樹。
 
 Time complexity: O(V) = O(n)
 Space complexity: O(H)
