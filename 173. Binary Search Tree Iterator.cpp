@@ -67,10 +67,10 @@ public:
 Intuition: 中序遍歷時，只將最左邊的子樹 push 到 stack 中。
            next()時: 先把 pop() 之後，再中序遍歷剛剛 pop 出來的 node 的右子樹。
 
-Time complexity: constructor():O(logn)
+Time complexity: constructor():O(h) ~= O(logn)
                  next():O(1), amortized
                  hasNext():O(1)
-Space complexity: O(logn)
+Space complexity: O(h) ~= O(logn)
 */
 
 /**
