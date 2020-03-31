@@ -43,7 +43,7 @@ public:
 Intuition:
 
 Time complexity: O(H + k)
-Space complexity: O(H)
+Space complexity: O(H + k), because may k > H 
 */
 
 /**
