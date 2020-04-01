@@ -64,3 +64,52 @@ public:
         return resultType(true, maxNode, minNode);
     }
 };
+
+/* Approach 2: BST Iterator 模板
+Intuition:
+Time complexity: O(V) = O(n)
+Space complexity: O(H)
+*/
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool isValidBST(TreeNode* root)
+    {
+        stack<TreeNode*> stk;
+        TreeNode *node = root;
+        bool ans = true;
+        TreeNode *preNode = nullptr;
+        
+        while(!stk.empty() || node != nullptr)
+        {
+            while(node != nullptr)
+            {
+                stk.push(node);
+                node = node->left;
+            }
+            
+            node = stk.top();
+            stk.pop();
+            
+            if(preNode && node->val <= preNode->val)
+            {
+                ans = false;
+                break;
+            }
+            
+            preNode = node;
+            node = node->right;
+        }
+        
+        return ans;
+    }
+};
