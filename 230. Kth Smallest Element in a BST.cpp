@@ -39,7 +39,45 @@ public:
     }
 };
 
-/* Approach 2: BST Iterator 模板
+/* Approach 2: DFS
+Intuition:
+
+Time complexity: O(V) = O(n)
+Space complexity: O(H)
+*/
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int kthSmallest(TreeNode* root, int k)
+    {    
+        return inorder(root, k);
+    }
+    
+    int inorder(TreeNode *root, int &k)
+    {
+        if(root == nullptr) return -1;
+        
+        int left = inorder(root->left, k);
+        
+        --k;
+        if(k == 0) return root->val;
+        
+        int right = inorder(root->right, k);
+        
+        return max(left, right);
+    }
+};
+
+/* Approach 3: BST Iterator 模板
 Intuition:
 
 Time complexity: O(H + k)
