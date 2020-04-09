@@ -1,6 +1,56 @@
 /* https://leetcode.com/problems/backspace-string-compare/ */
 
-/* Approach 1: Two Pointers
+/* Approach 1: Stack
+Intuition:
+
+Time complexity: O(m + n)
+Space complexity: O(m + n)
+*/
+
+class Solution {
+public:
+    bool backspaceCompare(string S, string T)
+    {
+        stack<char> stk_S, stk_T;
+        
+        for(auto &c : S)
+        {
+            if(c != '#')
+            {
+                stk_S.push(c);
+            }
+            else if(!stk_S.empty())
+            {
+                stk_S.pop();
+            }
+        }
+        
+        for(auto &c : T)
+        {
+            if(c != '#')
+            {
+                stk_T.push(c);
+            }
+            else if(!stk_T.empty())
+            {
+                stk_T.pop();
+            }
+        }
+        
+        if(stk_S.size() != stk_T.size()) return false;
+        
+        while(!stk_S.empty())
+        {
+            if(stk_S.top() != stk_T.top()) return false;
+            stk_S.pop();
+            stk_T.pop();
+        }
+        
+        return true;
+    }
+};
+
+/* Approach 2: Two Pointers
 Intuition:
 
 Time complexity: O(m + n)
