@@ -16,31 +16,31 @@ public:
         
         while(i >= 0 || j >= 0)
         {
-            int count = 0;
-            while(i >= 0 && (S[i] == '#' || count > 0))
+            int skip_S = 0;
+            while(i >= 0 && (S[i] == '#' || skip_S > 0))
             {
                 if(S[i] == '#')
                 {
-                    ++count;
+                    ++skip_S;
                 }
                 else
                 {
-                    --count;
+                    --skip_S;
                 }
                 
                 --i;
             }
             
-            count = 0;
-            while(j >= 0 && (T[j] == '#' || count > 0))
+            int skip_T = 0;
+            while(j >= 0 && (T[j] == '#' || skip_T > 0))
             {
                 if(T[j] == '#')
                 {
-                    ++count;
+                    ++skip_T;
                 }
                 else
                 {
-                    --count;
+                    --skip_T;
                 }
                 
                 --j;
