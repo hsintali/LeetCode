@@ -33,8 +33,8 @@ public:
 /* Approach 2: DP
 Intuition:
 
-Time complexity:O()
-Space complexity: O()
+Time complexity:O(target * nums.size())
+Space complexity: O(target)
 */
 
 class Solution {
@@ -43,12 +43,7 @@ public:
     {
         vector<unsigned int> dp(target + 1, 0);
         
-        for(auto &n : nums)
-        {
-            if(n > target) continue;
-            
-            dp[n] = 1;
-        }
+        dp[0] = 1;
         
         for(int i = 1; i <= target; ++i)
         {
