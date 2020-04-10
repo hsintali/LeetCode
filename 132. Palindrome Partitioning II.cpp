@@ -11,13 +11,13 @@ class Solution {
 public:
     int minCut(string s)
     {
-        vector<bool> visited(s.size(), false);
-        
-        return bfs(s, visited);;
+        return bfs(s);;
     }
 
-    int bfs(string &s, vector<bool> &visited)
+    int bfs(string &s)
     {
+        vector<bool> visited(s.size(), false);
+        
         queue<pair<int,int>> que;
         que.push(make_pair(0, s.size() - 1));
         
@@ -36,7 +36,8 @@ public:
                 
                 if(start > end) continue;
                 
-                for(int i = start; i <= end; ++i)
+                for(int i = end; i >= start; --i) // speedup
+                //for(int i = start; i <= end; ++i)
                 {
                     if(visited[i] == true) continue;
                     
