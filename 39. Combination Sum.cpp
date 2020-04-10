@@ -21,7 +21,7 @@ public:
     void dfs(vector<int> &candidates, int target, int startIndex, vector<int> &subset, int sum, vector<vector<int>> &ans)
     {
         if(sum == target) ans.push_back(subset);
-        if(sum > target) return;
+        if(sum >= target) return;
         
         for(int i = startIndex; i < candidates.size(); ++i)
         {
