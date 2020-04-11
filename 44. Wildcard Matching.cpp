@@ -14,9 +14,9 @@ public:
         return dfs(s, 0, p, 0);
     }
     
-    bool dfs(string s, int i, string p, int j)
+    bool dfs(string &s, int i, string &p, int j)
     {
-        // s is empty, the remaining of p must be '*'
+        // s[i:] is empty, the remaining of p must be '*'
         if(i == s.size())
         {
             while(j < p.size())
@@ -27,10 +27,10 @@ public:
             return true;
         }
         
-        // p is empty
+        // p[j:] is empty
         if(j == p.size()) return false;
         
-        // s, p are non-empty
+        // s[i:], p[j:] are non-empty
         if(p[j] == '*')
         {
             return dfs(s, i + 1, p, j) || dfs(s, i, p, j + 1);
@@ -48,7 +48,7 @@ public:
         }
     }
     
-    bool isCharMatch(char s, char p)
+    bool isCharMatch(char &s, char &p)
     {
         if(s == p || p == '?') return true;     
         return false;
@@ -74,7 +74,7 @@ public:
     {
         if(memo[i][j] != 0) return memo[i][j] == 1 ? true : false;
         
-        // s is empty, the remaining of p must be '*'
+        // s[i:] is empty, the remaining of p must be '*'
         if(i == s.size())
         {
             while(j < p.size())
@@ -85,10 +85,10 @@ public:
             return true;
         }
         
-        // p is empty
+        // p[j:] is empty
         if(j == p.size()) return false;
         
-        // s, p are non-empty
+        // s[i:], p[j:] are non-empty
         if(p[j] == '*')
         {
             memo[i][j] = dfs(s, i + 1, p, j, memo) || dfs(s, i, p, j + 1, memo) ? 1 : -1;
@@ -107,3 +107,4 @@ public:
         return false;
     }
 };
+
