@@ -108,3 +108,54 @@ public:
     }
 };
 
+
+/* Approach 4: Backtrack
+Intuition:
+
+Time complexity:O()
+Space complexity: O(1)
+*/
+
+class Solution {
+public:
+    bool isMatch(string s, string p)
+    {
+        int i = 0, j = 0;
+        int s_temp_idx = -1;
+        int p_star_idx = -1;
+        
+        while(i < s.size())
+        {
+            if(j < p.size() && (s[i] == p[j] || p[j] == '?'))
+            {
+                ++i;
+                ++j;
+            }
+            else if(j < p.size() && p[j] == '*')
+            {
+                s_temp_idx = i;
+                
+                p_star_idx = j;
+                ++j;
+            }
+            else if(p_star_idx >= 0) // backtrack
+            {
+                i = s_temp_idx + 1;
+                s_temp_idx = i;
+                
+                j = p_star_idx + 1;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        while(j < p.size())
+        {
+            if(p[j++] != '*') return false;
+        }
+        
+        return true;
+    } 
+};
