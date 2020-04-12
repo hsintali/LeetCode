@@ -28,7 +28,7 @@ public:
                     p.erase(p.begin() + i);
                     p.insert(p.begin(), q);
                     ans.push_back(i);
-					break;
+		    break;
                 }
             }
         }
