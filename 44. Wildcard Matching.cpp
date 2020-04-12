@@ -121,7 +121,14 @@ public:
     {
         if(p.size() == 0) return s.size() == 0;
         
-        vector<vector<bool>> dp(p.size() + 1, vector<bool>(s.size() + 1, false));
+        bool dp[p.size() + 1][s.size() + 1];
+        for(int i = 0; i < p.size() + 1; ++i) 
+        {
+            for(int j = 0; j < s.size() + 1; ++j)
+            {
+                dp[i][j] = false;
+            }
+        }
         dp[0][0] = true;
         
         for(int idx_p = 1; idx_p <= p.size(); ++idx_p)
