@@ -115,7 +115,45 @@ Time complexity:O(SP)
 Space complexity: O(SP)
 */
 
-
+class Solution {
+public:
+    bool isMatch(string s, string p)
+    {
+        if(p.size() == 0) return s.size() == 0;
+        
+        vector<vector<bool>> dp(p.size() + 1, vector<bool>(s.size() + 1, false));
+        dp[0][0] = true;
+        
+        for(int idx_p = 1; idx_p <= p.size(); ++idx_p)
+        {
+            if(p[idx_p - 1] == '*')
+            {
+                dp[idx_p][0] = dp[idx_p - 1][0];
+                
+                for(int idx_s = 1; idx_s <= s.size(); ++idx_s)
+                {         
+                    dp[idx_p][idx_s] = dp[idx_p - 1][idx_s] || dp[idx_p][idx_s - 1];
+                }
+            }
+            else if(p[idx_p - 1] == '?')
+            {
+                for(int idx_s = 1; idx_s <= s.size(); ++idx_s)
+                {
+                    dp[idx_p][idx_s] = dp[idx_p - 1][idx_s - 1];
+                }
+            }
+            else
+            {
+                for(int idx_s = 1; idx_s <= s.size(); ++idx_s)
+                {
+                    dp[idx_p][idx_s] = dp[idx_p - 1][idx_s - 1] && (p[idx_p - 1] == s[idx_s - 1]);
+                }
+            }
+        }
+        
+        return dp[p.size()][s.size()];
+    }
+};
 
 /* Approach 4: Backtrack
 Intuition:
