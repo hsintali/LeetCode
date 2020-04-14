@@ -3,8 +3,8 @@
 /* Approach 1: DFS
 Intuition:
 
-Time complexity:O()
-Space complexity: O()
+Time complexity:O(n!)
+Space complexity: O(n)
 */
 
 class Solution {
