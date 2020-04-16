@@ -1,7 +1,7 @@
 /* https://leetcode.com/problems/word-search/ */
 
 /* Approach 1: DFS
-Intuition:
+Intuition: 無法使用 BFS，因為 BFS 無法回朔 visited[][]。BFS 無法搜尋圖的路徑，只能搜尋有向圖(樹)的路徑。
 
 Time complexity:O(N * 4^L)
 Space complexity: O(L)
