@@ -23,7 +23,7 @@ public:
     }
 };
 
-/* Approach 1: PrefixSum
+/* Approach 2: PrefixSum
 Intuition:
 
 Time complexity: O(n)
