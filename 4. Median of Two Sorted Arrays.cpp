@@ -221,3 +221,51 @@ Time complexity: O(log(n + m))
 Space complexity: O(1)
 */
 
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2)
+    {
+        int n = nums1.size() + nums2.size();
+        
+        if(n % 2 == 0)
+        {
+            return ((double)findKth(nums1, nums2, n / 2 + 1) + (double)findKth(nums1, nums2, n / 2)) / 2;
+        };
+        
+        return findKth(nums1, nums2, n / 2 + 1);
+    }
+    
+    int findKth(vector<int> &nums1, vector<int> &nums2, int k)
+    {
+        int i = 0, j = 0;
+        
+        while(k > 1)
+        {
+            int offset = k / 2;
+            
+            if(i + offset - 1 >= nums1.size())
+            {
+                j += offset;
+            }
+            else if(j + offset - 1 >= nums2.size())
+            {
+                i += offset;
+            }
+            else if(nums1[i + offset - 1] <= nums2[j + offset - 1])
+            {
+                i += offset;
+            }
+            else
+            {
+                j += offset;
+            }
+            
+            k -= offset; 
+        }
+        
+        if(i >= nums1.size()) return nums2[j];
+        else if(j >= nums2.size()) return nums1[i];
+        
+        return nums1[i] < nums2[j] ? nums1[i] : nums2[j];
+    }
+};
