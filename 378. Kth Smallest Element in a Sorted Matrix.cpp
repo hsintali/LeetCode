@@ -270,7 +270,7 @@ public:
             {
                 ans = val;
             }
-            else if(j < n - 1)
+            else if(j < matrix[0].size() - 1)
             {
                 int largerVal = matrix[i][j + 1];
                 pair<int, int> indices = {i, j + 1};
