@@ -46,3 +46,37 @@ public:
         return image;
     }
 };
+
+/* Approach 2: DFS
+Intuition:
+
+Time complexity:  O(n)
+Space complexity: O(n)
+*/
+
+class Solution {
+public:
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor)
+    {
+        int target = image[sr][sc];
+        
+        if(target == newColor) return image;
+        
+        dfs(image, sr, sc, target, newColor);
+        
+        return image;
+    }
+    
+    void dfs(vector<vector<int>> &image, int x, int y, int target, int newColor)
+    {
+        if(x < 0 || x >= image.size() || y < 0 || y >= image[0].size()) return;
+        if(image[x][y] != target) return;
+        
+        image[x][y] = newColor;
+        
+        dfs(image, x + 1, y, target, newColor);
+        dfs(image, x - 1, y, target, newColor);
+        dfs(image, x, y + 1, target, newColor);
+        dfs(image, x, y - 1, target, newColor);
+    }
+};
