@@ -163,7 +163,6 @@ public:
         return true;
     }
     
-    Trie *root;
     Trie **children;
     bool isWord;
 };
