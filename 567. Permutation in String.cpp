@@ -1,6 +1,6 @@
 /* https://leetcode.com/problems/permutation-in-string/ */
 
-/* Approach 1: Trie
+/* Approach 1: HashMap + Sliding Window
 Intuitions
 Time complexity:  O(n1 + (n2 - n1)), n1 is the length of s1, n2 is the length of s2
 Space complexity: O(26) = O(1)
