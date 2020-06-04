@@ -23,14 +23,14 @@ public:
              }
         );
 
-    int total = 0;
-    int n = costs.size() / 2;
+        int total = 0;
+        int n = costs.size() / 2;
         
-    // To optimize the company expenses,
-    // send the first n persons to the city A
-    // and the others to the city B
-    for (int i = 0; i < n; ++i) total += costs[i][0] + costs[i + n][1];
+        // To optimize the company expenses,
+        // send the first n persons to the city A
+        // and the others to the city B
+        for (int i = 0; i < n; ++i) total += costs[i][0] + costs[i + n][1];
     
-    return total;
+        return total;
     }
 };
