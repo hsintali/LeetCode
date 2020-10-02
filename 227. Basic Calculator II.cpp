@@ -11,7 +11,7 @@ class Solution {
 public:
     int calculate(string s)
     {
-        s = "+" + s + "+";
+        s += "+";
         int ans{};
         int val{};
         char op{'+'};
