@@ -11,10 +11,10 @@ class Solution {
 public:
     int calculate(string s)
     {
-        s += "+";
+        s = "+" + s + "+";
         int ans{};
         int val{};
-        char op{'+'};
+        char op{};
         stack<int> stk;
         
         for(auto c : s)
@@ -27,15 +27,12 @@ public:
                 continue;
             }
             
-            if(op == '+')
+            if(op == '+' or op == '-')
             {
+                val = (op == '+' ? val : -val);
                 stk.push(val);
             }
-            else if(op == '-')
-            {
-                stk.push(-val);
-            }
-            else
+            else if(op == '*' or op == '/')
             {
                 int n{};
                 if(op == '*')
@@ -60,6 +57,60 @@ public:
         {
             ans += stk.top();
             stk.pop();
+        }
+        
+        return ans;
+    }
+};
+
+/* Approach 2:
+Intuition:
+
+Time complexity:  O(n)
+Space complexity: O(1)
+*/
+
+class Solution {
+public:
+    int calculate(string s)
+    {
+        s = "+" + s + "++";
+        int ans{};
+        int val{};
+        int prev{};
+        char op{};
+        
+        for(auto c : s)
+        {
+            if(isspace(c)) continue;
+            
+            if(isdigit(c))
+            {
+                val = (10 * val) + (c - '0');
+                continue;
+            }
+            
+            // [prev] [op] [val] [cur_char c is an operator]
+            if(op == '+' or op == '-')
+            {
+                ans += prev;
+                prev = (op == '+' ? val : -val);
+            }
+            else
+            {
+                if(op == '*')
+                {
+                    prev *= val;
+                    
+                }
+                else if(op == '/')
+                {
+                    prev /= val;
+                }
+            }
+            
+            val = 0;
+            op = c;  
         }
         
         return ans;
