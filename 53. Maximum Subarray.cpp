@@ -1,6 +1,6 @@
 /* https://leetcode.com/problems/maximum-subarray/ */
 
-/* Approach 1: DP
+/* Approach 1: DP (Kadane's Algorithm)
 Intuition:
 
 Time complexity: O(n)
@@ -20,6 +20,23 @@ public:
         }
         
         return maxSum;
+    }
+};
+
+// or
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums)
+    {
+        int maxSum = nums[0];
+        int curMax = nums[0];
+        for(int i = 1; i < nums.size(); ++i)
+        {
+            curMax = max(nums[i], curMax + nums[i]);
+            maxSum = max(maxSum, curMax);
+        }       
+        return maxSum; 
     }
 };
 
