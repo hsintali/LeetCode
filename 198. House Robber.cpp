@@ -40,7 +40,7 @@ public:
         dp[1] = nums[0];
         for(int i = 1; i < nums.size(); ++i)
         {
-            dp[(i + 1 + 3) % 3] = max(dp[(i + 3)% 3], dp[(i - 1 + 3) % 3] + nums[i]);
+            dp[(i + 1 + 3) % 3] = max(dp[(i + 3) % 3], dp[(i - 1 + 3) % 3] + nums[i]);
         }
         return dp[nums.size() % 3];
     }
