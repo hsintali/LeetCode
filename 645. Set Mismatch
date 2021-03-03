@@ -1,0 +1,53 @@
+/* https://leetcode.com/problems/set-mismatch/ */
+
+/* Approach 1: brute force
+Intuition:
+
+Time complexity:O(n^2)
+Space complexity: O(1)
+*/
+
+
+/* Approach 2: sorting
+Intuition:
+
+Time complexity:O(nlogn)
+Space complexity: O(logn)
+*/
+
+/* Approach 3: hashMap
+Intuition:
+
+Time complexity:O(n)
+Space complexity: O(n)
+*/
+
+
+/* Approach 4: multiple negative
+Intuition:
+
+Time complexity:O(n)
+Space complexity: O(1)
+*/
+
+/* Approach 5: XOR
+Intuition:
+
+Time complexity:O(n)
+Space complexity: O(1)
+*/
+
+
+/* Approach 6: math
+Intuition:
+
+Time complexity:O(n)
+Space complexity: O(1)
+*/
+
+/* Approach 7: swap to corresponding bucket
+Intuition:
+
+Time complexity:O(n)
+Space complexity: O(1)
+*/
