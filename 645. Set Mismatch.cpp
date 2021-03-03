@@ -1,13 +1,35 @@
 /* https://leetcode.com/problems/set-mismatch/ */
 
-/* Approach 1: brute force
+/* Approach 1: brute force (TLE)
 Intuition:
 
 Time complexity:O(n^2)
 Space complexity: O(1)
 */
 
-
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& nums)
+    {
+        int dup = 0;
+        int miss = 0;
+        for(int i = 1; i <= nums.size(); ++i)
+        {
+            int count = 0;
+            for(int j = 0; j < nums.size(); ++j)
+            {
+                if(nums[j] == i) ++count;
+            }
+            
+            if(count == 2) dup = i;
+            else if(count == 0) miss = i;
+            
+            if(dup > 0 && miss > 0) break;
+        }
+        
+        return vector<int>({dup, miss});
+    }
+};
 
 /* Approach 2: sorting
 Intuition:
@@ -16,7 +38,33 @@ Time complexity:O(nlogn)
 Space complexity: O(logn)
 */
 
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& nums)
+    {
+        sort(nums.begin(), nums.end());
+        
+        int dup = 0;
+        int miss = 0;
+        for(int i = 1; i < nums.size(); ++i)
+        {
+            if(nums[i] == nums[i - 1])
+            {
+                dup = nums[i];
+            }
+            else if(nums[i] > nums[i - 1] + 1)
+            {
+                miss = nums[i - 1] + 1; 
+            }
+        }
 
+        // coner case
+        if(nums[0] != 1) miss = 1;
+        else if(nums[nums.size() - 1] != nums.size()) miss = nums.size();
+        
+        return vector<int>({dup, miss});
+    }
+};
 
 /* Approach 3: hashMap
 Intuition:
