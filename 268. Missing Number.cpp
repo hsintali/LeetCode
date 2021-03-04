@@ -119,10 +119,24 @@ public:
     }
 };
 
-/* Approach 5: Gauss's Formula
-Intuition:
+/* Approach 5: Math: Gauss's Formula
+Intuition: Summation of 0, 1, 2, ... n
+           then minus the summation of nums[i] for i from 0 to n - 1
 
 Time complexity:  O(n)
 Space complexity: O(1)
 */
 
+class Solution {
+public:
+    int missingNumber(vector<int>& nums)
+    {
+        int ans = nums.size();
+        for(int i = 0; i < nums.size(); ++i)
+        {
+            ans += i - nums[i];
+        }
+        
+        return ans;
+    }
+};
