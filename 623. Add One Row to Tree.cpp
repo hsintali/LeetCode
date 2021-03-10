@@ -149,10 +149,55 @@ public:
     }
 };
 
-/* Approach 4: DFS (queue)
+/* Approach 4: DFS (stack)
 Intuition: 
 
 Time complexity: O(n), where n is the number of nodes
 Space complexity: O(d), depth
 */
 
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* addOneRow(TreeNode* root, int v, int d)
+    {
+        if(d == 1)
+        {
+            return new TreeNode(v, root, nullptr);
+        }
+        
+        stack<pair<int, TreeNode*>> stk;
+        stk.push(make_pair(1, root));
+        while(!stk.empty())
+        {
+            int level = stk.top().first;
+            TreeNode *node = stk.top().second;
+            stk.pop();
+            
+            if(level >= d) break;
+            
+            if(level == d - 1)
+            {
+                node->left = new TreeNode(v, node->left, nullptr);
+                node->right = new TreeNode(v, nullptr, node->right);
+            }
+            else
+            {
+                if(node->left) stk.push(make_pair(level + 1, node->left));
+                if(node->right) stk.push(make_pair(level + 1, node->right));
+            }
+        }
+
+        return root;
+    }
+};
