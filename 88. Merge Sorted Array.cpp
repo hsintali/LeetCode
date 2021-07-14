@@ -13,7 +13,7 @@ Intuition: 將 nums1 放到 nums1_copy
            比較 nums1_copy[p1], nums2[p2] 大小之後，
            將小的放到 nums1[i], i=0:m+n-1
            
-Time complexity: O(n)
+Time complexity: O(m + n)
 Space complexity: O(n)
 */
 
@@ -23,7 +23,7 @@ Intuition: p1 一開始指向 nums1[m-1]，p2 一開始指向 nums2[n-1]。
            比較 nums1_copy[p1], nums2[p2] 大小之後，
            將大的放到 nums1[i], i=m+n-1:
 
-Time complexity: O(n)
+Time complexity: O(m + n)
 Space complexity: O(1)
 */
 
